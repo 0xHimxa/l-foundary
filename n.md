@@ -5,6 +5,8 @@ vm
 
 
  if we dont add broadcast it wont send it will simulate seding it
+meaning it will show what will happen 
+
 forge script script/deploy-simple.s.sol --rpc-url http://127.0.0.1:8545 --broadcast (--private-key) or (account test) 
 
 
