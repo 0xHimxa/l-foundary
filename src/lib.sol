@@ -7,25 +7,22 @@ library PriceConverter {
     // not library can have storage variables
     // they are for fn
 
-    function getPrice() internal view returns (uint256) {
+    function getPrice( AggregatorV3Interface _pricefeed) internal view returns (uint256) {
         //the aggreagtor require the contract addres of the coin we want to get is price which we can get from chain
         //it will provide us with the abi as well
 
-        AggregatorV3Interface pricefeed = AggregatorV3Interface(
-            0x694AA1769357215DE4FAC081bf1f309aDC325306
-        );
-
         //this part we are distructring the function returned value
         // it returned 5 values so we use , to ingorne some that we dont need
-        (, int256 price, , , ) = pricefeed.latestRoundData();
+        (, int256 price, , , ) = _pricefeed.latestRoundData();
 
         return uint256(price * 1e10);
     }
 
     function getConvertionRate(
-        uint256 ethAmount
+        uint256 ethAmount,
+        AggregatorV3Interface _pricefeed
     ) internal view returns (uint256) {
-        uint256 price = getPrice();
+        uint256 price = getPrice(_pricefeed);
 
         uint256 ethamountUsd = (price * ethAmount) / 1e18;
 

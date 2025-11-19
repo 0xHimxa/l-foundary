@@ -10,7 +10,7 @@ contract FundmeTests is Test {
 
 // inside the setup is where we need to deploy our contract first b4 testing
     function setUp() external{
-        fundme = new Fundme();
+        fundme = new Fundme(0x694AA1769357215DE4FAC081bf1f309aDC325306);
 
         
     }

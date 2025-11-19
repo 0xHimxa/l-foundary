@@ -26,15 +26,16 @@ uint256  public constant MINIMUM_USD = 5e18;
 
 // constructer is a fn that is been called righ wen the contruct is deployed
 
-constructor(){
+  AggregatorV3Interface private s_pricefeed;
+constructor(address _pricefeed){
  i_owner = msg.sender;
+ s_pricefeed = AggregatorV3Interface(_pricefeed);
 }
 
 
 
 function getVersion()public view returns(uint256){
-  AggregatorV3Interface pricefeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
-  return pricefeed.version();
+  return s_pricefeed.version();
 
 
 }
@@ -76,7 +77,7 @@ function fundme() public payable {
 // the require is use to set MINIMUM_USD like how we do it below, and we added error message
 
 //msg.value is a uint so it have asse to our priceconver lib
-  require(msg.value.getConvertionRate() > MINIMUM_USD,'please increase the value');
+  require(msg.value.getConvertionRate(s_pricefeed) > MINIMUM_USD,'please increase the value');
 
   addressToAmountFunded[msg.sender] += msg.value;
   funders.push(msg.sender);
