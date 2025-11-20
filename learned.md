@@ -6,6 +6,14 @@ forget test -vv
 
 to get the root cause of a failed test addanother v to the -vv = -vvv
 
+ to test specific fn  in the log we use
+
+forget test --match-test function or variable name-vvv
+
+
+
+
+
  type of test
 
  unit test
@@ -26,3 +34,7 @@ to get the root cause of a failed test addanother v to the -vv = -vvv
  //downside of fork
  we make alot of api calls to alcamy which can run out our bill
 
+
+
+use deploy our own mock localy it have the data copy for what all those once on real chain, 
+we deploy it to our local avail so we can access it from their withou having to provide  --fork-url rpc url

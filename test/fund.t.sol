@@ -3,14 +3,20 @@ pragma solidity 0.8.30;
 
 import {Test,console} from "forge-std/Test.sol";
 import {Fundme} from "../src/fund-me.sol";
-
+import {DeployFundMe} from  "../script/deploy-fundme.s.sol";
 
 contract FundmeTests is Test {
     Fundme fundme;
 
 // inside the setup is where we need to deploy our contract first b4 testing
     function setUp() external{
-        fundme = new Fundme(0x694AA1769357215DE4FAC081bf1f309aDC325306);
+        // fundme = new Fundme(0x694AA1769357215DE4FAC081bf1f309aDC325306);
+        
+        // check the scrpt we add the address thier and it returned fundme
+
+        DeployFundMe deployfundme = new DeployFundMe();
+
+        fundme = deployfundme.run();
 
         
     }
@@ -29,7 +35,7 @@ contract FundmeTests is Test {
 
 
        // console.log(fundme.i_owner(), 'check',address(this));
-        assertEq(fundme.i_owner(),address(this));
+        assertEq(fundme.i_owner(),msg.sender);
         //console.log(fundme.MINIMUM_USD5e18);
 
 
