@@ -22,7 +22,7 @@ contract Fundme{
 
 uint256  public constant MINIMUM_USD = 5e18;
 
-  address public immutable i_owner;
+  address private immutable i_owner;
 
 // constructer is a fn that is been called righ wen the contruct is deployed
 
@@ -173,10 +173,28 @@ fallback() external payable {
 }
 
 
+//getter functions
+
+function getAmountFunded(address _funder) public view returns(uint256) {
+
+uint256 amountFunded = addressToAmountFunded[_funder];
+return amountFunded;
+}
+
+
+function getfunder(uint256 _index) public view returns(address){
+ return funders[_index];
 
 
 
 
+}
+
+
+function getOwner() external view returns(address){
+
+  return i_owner;
+}
 
 
 }
