@@ -38,3 +38,9 @@ forget test --match-test function or variable name-vvv
 
 use deploy our own mock localy it have the data copy for what all those once on real chain, 
 we deploy it to our local avail so we can access it from their withou having to provide  --fork-url rpc url
+
+
+check more on casting uint160 to address
+
+
+so we use chisel to write solidity in terminal

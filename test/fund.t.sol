@@ -122,10 +122,24 @@ function testWtidrawWithASingleFunder() public funded{
 uint256 startingOwnerbalance = fundme.getOwner().balance;
 uint256 startingFundMebalance = address(fundme).balance;
 
+
+
 //act
+//gasleft() is a build in fn that tell us how much gas we have left
+
+uint256 gasStart = gasleft(); //1000 gas
+
+
+// with this below we set our gas price with iit
+//vm.txGasPrice(1);
+
 
 vm.prank(fundme.getOwner());
-fundme.withdraw();
+fundme.withdraw();  //200 gas
+
+uint256 gasEnd = gasleft(); //800
+ uint256 gasUsed = gasStart - gasEnd* // we mulitply it by our gass price = tx.gasprice; it a build in 
+  console.log(gasUsed);
 
 
 //assert
@@ -140,6 +154,40 @@ assertEq(startingFundMebalance + startingOwnerbalance,endingOwnerBalanece);
 
 
 
+
+}
+
+
+function testMultiFunder() public {
+    uint160 funders = 10;
+    uint160 startingfunders = 1;
+
+    for(uint160 i = startingfunders; startingfunders < funders; startingfunders++ ){
+    //vm.prank
+    //vm.deal;
+
+    //hoax do same it fund a wallet then prank
+
+
+    hoax(address(i), 1 ether);
+    fundme.fundme{value: 0.1 ether}();
+
+
+
+    }
+
+
+    uint256 startingOwnerbalance = fundme.getOwner().balance;
+uint256 startingFundMebalance = address(fundme).balance;
+
+//anythin in tx in between will be sent as the owner
+vm.startPrank(fundme.getOwner());
+
+fundme.withdraw();
+vm.stopPrank();
+
+assertEq(address(fundme).balance,0);
+assertEq(startingFundMebalance + startingOwnerbalance,fundme.getOwner().balance);
 
 }
 
