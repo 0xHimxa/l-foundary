@@ -127,7 +127,7 @@ uint256 startingFundMebalance = address(fundme).balance;
 //act
 //gasleft() is a build in fn that tell us how much gas we have left
 
-uint256 gasStart = gasleft(); //1000 gas
+//uint256 gasStart = gasleft(); //1000 gas
 
 
 // with this below we set our gas price with iit
@@ -137,9 +137,9 @@ uint256 gasStart = gasleft(); //1000 gas
 vm.prank(fundme.getOwner());
 fundme.withdraw();  //200 gas
 
-uint256 gasEnd = gasleft(); //800
- uint256 gasUsed = gasStart - gasEnd* // we mulitply it by our gass price = tx.gasprice; it a build in 
-  console.log(gasUsed);
+//uint256 gasEnd = gasleft(); //800
+ //uint256 gasUsed = gasStart - gasEnd* // we mulitply it by our gass price = tx.gasprice; it a build in 
+ // console.log(gasUsed);
 
 
 //assert

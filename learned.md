@@ -44,3 +44,7 @@ check more on casting uint160 to address
 
 
 so we use chisel to write solidity in terminal
+
+
+we can use this blow to check element sotred in storage
+cast storage  replace this with the real CA: 0x5FbDB2315678afecb367f032d93F642f64180aa
