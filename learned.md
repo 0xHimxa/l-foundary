@@ -48,3 +48,16 @@ so we use chisel to write solidity in terminal
 
 we can use this blow to check element sotred in storage
 cast storage  replace this with the real CA: 0x5FbDB2315678afecb367f032d93F642f64180aa
+
+
+check which var has getter non 
+
+
+
+need to install so   you can access our recently deploy contract and interact iwth it
+forge install cyfrin/foundry-devops
+
+
+
+if we have more than one contract to deploy specific one do
+script/name:contractname
